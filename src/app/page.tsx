@@ -1,113 +1,515 @@
+"use client"
+import Link from "next/link";
 import Image from "next/image";
 
+// import LinkedInIcon from "@mui/icons-material/LinkedIn";
+// import GitHubIcon from "@mui/icons-material/GitHub";
+// import XIcon from "@mui/icons-material/X";
+// import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+
+import { useState } from "react";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/sheets";
+
+
+
+
+import  { Button, buttonVariants } from "@/components/button";
 export default function Home() {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const closeSidebar = () => {
+    setIsSidebarOpen(false);
+  };
+
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/app/page.tsx</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
+    <main>
+      {/* ---------header------------ */}
+     <header className={`header flex justify-end items-center transition-opacity duration-300 ${isSidebarOpen ? "opacity-50" : "opacity-100"}`}>
+        <div>
+          <Link href={"#home"} className="logo ">
+          
+          </Link>
         </div>
-      </div>
+        <nav className="navbar">
+          <Sheet open={isSidebarOpen} onOpenChange={setIsSidebarOpen}>
+            <SheetTrigger className="tablet:hidden">
+             
+            </SheetTrigger>
+            <SheetContent className="pt-4 text-3xl">
+              <br />
+              <br />
+              <br />
+              <Link href={"#home"} onClick={closeSidebar}>
+                Home
+              </Link>
+              <br />
+              <br />
+              <br />
+              <Link href={"#about"} onClick={closeSidebar}>
+                About
+              </Link>
+              <br />
+              <br />
+              <br />
+              <Link href={"#education"} onClick={closeSidebar}>
+                Project
+              </Link>
+              <br />
+              <br />
+              <br />
+              <Link href={"#skills"} onClick={closeSidebar}>
+                Skills
+              </Link>
+              <br />
+              <br />
+              <br />
+              <Link href={"#contact"} onClick={closeSidebar}>
+                Contact
+              </Link>
+              <br />
+            </SheetContent>
+          </Sheet>
+          <ul className="hidden tablet:flex gap-x-8 text-[1.7rem]">
+            <li>
+              <Link
+                className="text-[var(--text-color)] font-bold ml-[3.5rem] transition duration-300 hover:text-[var(--main-color)] 
+active:text-[var(--main-color)]"
+                href={"#home"}
+              >
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-[var(--text-color)] font-bold ml-[3.5rem] transition duration-300 hover:text-[var(--main-color)] 
+active:text-[var(--main-color)]"
+                href={"#about"}
+              >
+                About
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-[var(--text-color)] font-bold ml-[3.5rem] transition duration-300 hover:text-[var(--main-color)] 
+active:text-[var(--main-color)]"
+                href={"#education"}
+              >
+                Project
+              </Link>
+            </li>
+            <li>
+              <Link
+                className="text-[var(--text-color)] font-bold ml-[3.5rem] transition duration-300 hover:text-[var(--main-color)] 
+active:text-[var(--main-color)]"
+                href={"#skills"}
+              >
+                Skills
+              </Link>{" "}
+            </li>
+            <li>
+              <Link
+                className="text-[var(--text-color)] font-bold ml-[3.5rem] transition duration-300 hover:text-[var(--main-color)] 
+active:text-[var(--main-color)]"
+                href={"#contact"}
+              >
+                Contact
+              </Link>
+            </li>
+          </ul>
+        </nav>
+      </header>
 
-      <div className="relative z-[-1] flex place-items-center before:absolute before:h-[300px] before:w-full before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-full after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 sm:before:w-[480px] sm:after:w-[240px] before:lg:h-[360px]">
-        <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
+      {/*-------------- home section-------------- */}
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Docs{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Find in-depth information about Next.js features and API.
+      <section className={`home bg-[url('../../public/fullSizeImge1.jpg')] bg-cover bg-center transition-opacity duration-300 ${isSidebarOpen ? "opacity-50" : "opacity-100"}`} id="home">
+        <div className="home-content">
+          <h1>
+            Hi, I am<span> Muhammad Javed</span>{" "}
+          </h1>
+          <div className="text-animated">
+            <h3>Full Stack Developer</h3>
+          </div>
+          <p className="text-blue-600 ">
+            I am a passionate Full Stack Developer currently honing my skills at
+            PIAIC. On the front-end, I ve mastered Next.js and Tailwind CSS,
+            creating responsive and dynamic user interfaces. As I continue my
+            journey, I’m diving deeper into back-end technologies to build
+            comprehensive, full-stack applications. Stay tuned as I continue to
+            expand my skill set and bring innovative ideas to life!
           </p>
-        </a>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Learn{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
-          </p>
-        </a>
+          <div className="btn-box">
+            <Link
+              href={
+                "https://www.linkedin.com/in/muhammad-javed-383914200/"
+              }
+              className="btn" target="_blank"
+            >
+              Hire me
+            </Link>
+            <Link
+              href={
+                "https://github.com/Muhammad-javed440/"
+              }
+              className="btn" target="_blank"
+            >
+              My work
+            </Link>
+          </div>
+          <div className="flex-space-x-4 home-sci">
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Templates{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-sm opacity-50">
-            Explore starter templates for Next.js.
-          </p>
-        </a>
+          </div>
+        </div>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className="mb-3 text-2xl font-semibold">
-            Deploy{" "}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
+        <div className="home-imgHover"></div>
+      </section>
+
+      {/* --------------About Section------------- */}
+
+      <section className="about" id="about">
+        <h2 className="heading">
+          About <span>Me</span>
+        </h2>
+            
+        <div className="about-image relative w-[25rem] h-[25rem] rounded-full flex justify-center items-center">
+      <Image
+        src="/SmallSizeImge.jpg" 
+        alt="Profile Image"
+        width={225}
+        height={225}
+        className="Image rounded-full border-[.2rem] border-[var(--main-color)]"
+      />
+      <span className="circle-spin absolute"></span>
+    </div>
+
+        <div className="about-content">
+          <h2>Full Stack Developer</h2>
+          <p className="about-para">
+            I am a passionate Full Stack Developer currently honing my skills at
+            PIAIC. On the front-end, I have mastered Next.js and Tailwind CSS,
+            creating responsive and dynamic user interfaces. As I continue my
+            journey, I’m diving deeper into back-end technologies to build
+            comprehensive, full-stack applications. Stay tuned as I continue to
+            expand my skill set and bring innovative ideas to life!
           </p>
-        </a>
-      </div>
+
+          <div className="btn-box btn">
+            <a href="#about" className="btn">
+              Read More
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* -----------------------project section--------------------------- */}
+
+      <section className="education" id="education">
+        <h2 className="heading">
+          My <span>Projects </span>
+        </h2>
+
+        <div className="education-row">
+          <div className="education-column">
+            {/* <h3 className="title">Education</h3> */}
+
+            <div className="education-box">
+              <div className="education-content">
+                <div className="content">
+                  <div className="year">
+                    <h3>BMI Calculator</h3>
+                  </div>
+                  <p>
+                    The BMI Calculator is a TypeScript-based CLI tool that
+                    calculates Body Mass Index (BMI) using user inputs for
+                    height and weight. It provides health status feedback
+                    (Underweight, Healthy, Overweight) with color-coded results
+                    using Chalk, and features an interactive interface with
+                    Inquirer.
+                    <Link
+                      href="https://github.com/Tayyabkhalid993/PIAIC56/tree/main/NodeProjects/BMI"
+                      className="text-blue-500 hover:underline ml-2"
+                      target="_blank"
+                    >
+                      Read More
+                    </Link>
+                  </p>
+                </div>
+              </div>
+
+              <div className="education-content">
+                <div className="content">
+                  <div className="year">
+                    <h3>Rock-Paper-Scissors</h3>
+                  </div>
+                  <p>
+                    A classic Rock-Paper-Scissors game. It allows players to
+                    enter their name, choose between rock, paper, and scissors,
+                    and then compares their choice to a computer s random
+                    selection. The game displays the winner and offers the
+                    option to play again.
+                    <Link
+                      href="https://github.com/Tayyabkhalid993/PIAIC56/tree/main/NodeProjects/Other_Projects/Rock_Paper_sessior"
+                      className="text-blue-500 
+                      hover:underline ml-2"
+                      target="_blank"
+                    >
+                      Read More
+                    </Link>
+                  </p>
+                </div>
+              </div>
+
+              <div className="education-content">
+                <div className="content">
+                  <div className="year">
+                    <h3>Number Guessing Game</h3>
+                  </div>
+                  <p>
+                  A number guessing game. Computer generate a random number.
+                  Then user is prompted to guess a randomly generated number between 1 and 10. If the guess is correct, the game ends with a congratulatory message. If the guess is incorrect, the user is provided with feedback (too high or too low) and allowed to try again until they guess correctly.
+                    <Link
+                      href="https://github.com/Tayyabkhalid993/PIAIC56/tree/main/NodeProjects/Project01_number_guessing_game"
+                      className="text-blue-500 hover:underline ml-2"
+                      target="_blank"
+                    >
+                      Read More
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* --------------2nd column----------- */}
+
+          <div className="education-column">
+            {/* <h3 className="title">Experience</h3> */}
+            <div className="education-box">
+              <div className="education-content">
+                <div className="content">
+                  <div className="year">
+                    <h3>ATM</h3>
+                  </div>
+                  <p>
+                  This TypeScript code simulates a simple ATM with a command-line interface (CLI).
+                  Users can choose to Sign in using predefined credentials. Upon successful login, they can check their balance, withdraw cash (limited by available funds), or choose pre-defined Fast cash amounts. The program uses inquirer for user prompts and chalk for colored output.
+                    <Link
+                      href="https://github.com/Tayyabkhalid993/PIAIC56/tree/main/NodeProjects/Project02_ATM"
+                      className="text-blue-500 
+                      hover:underline ml-2"
+                      target="_blank"
+                    >
+                      Read More
+                    </Link>
+                  </p>
+                </div>
+              </div>
+
+              <div className="education-content">
+                <div className="content">
+                  <div className="year">
+                    <h3>To-Do List</h3>
+                  </div>
+                  <p>
+                  A simple to-do list application.
+                  Users are prompted to enter tasks, which are added to a list. The program continues to ask for more tasks until the user confirms they are finished. Finally, the completed to-do list is displayed.
+                    <Link
+                      href="https://github.com/Tayyabkhalid993/PIAIC56/tree/main/NodeProjects/Project03_toDoList"
+                      className="text-blue-500 
+                       hover:underline ml-2"
+                      target="_blank"
+                    >
+                      Read More
+                    </Link>
+                  </p>
+                </div>
+              </div>
+
+              <div className="education-content">
+                <div className="content">
+                  <div className="year">
+                    <h3>Currency Converter</h3>
+                  </div>
+                  <p>
+                  A currency converter with a user-friendly. Users can select the currency they want to convert from and to,
+                  as well as enter the amount. The program utilizes a defined exchange rate object to calculate the equivalent amount in the desired currency. Finally, it displays the converted amount with clear formatting.
+                    <Link
+                      href="https://github.com/Tayyabkhalid993/PIAIC56/tree/main/NodeProjects/Other_Projects/Rock_Paper_sessior"
+                      className="text-blue-500 
+                       hover:underline ml-2"
+                      target="_blank"
+                    >
+                      Read More
+                    </Link>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* -----------------------skill section--------------------------- */}
+      <section className="skills" id="skills">
+        <h2 className="heading">
+          {" "}
+          My <span>Skills</span>
+        </h2>
+            <h3 className="skill-title">Coding Skills</h3>
+
+        <div className="skills-row">
+          <div className="skills-column">
+
+            <div className="skills-box">
+              <div className="skills-content">
+                <div className="progress">
+                  <h3>
+                    HTML <span>90%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div className="progress">
+                  <h3>
+                    CSS <span>80%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div className="progress">
+                  <h3>
+                    TypeScript <span>92%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div className="progress">
+                  <h3>
+                    Python <span>83%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+              </div>
+            </div>
+          </div>
+
+          {/* ----------------------For another Column--------------------------- */}
+
+          <div className="skills-column">
+            {/* <h3 className="title">Professional Skills</h3> */}
+            <div className="skills-box">
+              <div className="skills-content">
+                <div className="progress">
+                  <h3>
+                  Next.JS <span>95%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div className="progress">
+                  <h3>
+                    Tailwind CSS <span>85%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div className="progress">
+                  <h3>
+                    Express <span>82%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                <div className="progress">
+                  <h3>
+                  Node Js <span>83%</span>
+                  </h3>
+                  <div className="bar">
+                    <span></span>
+                  </div>
+                </div>
+                  <div className="bar">
+                    <span></span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="contact" id="contact">
+        <center></center>
+        <h2 className="heading">
+          Contact <span>Me!</span>
+        </h2>
+
+        <form action="#">
+          <div className="input-box">
+            <div className="input-field">
+              <input type="text" placeholder="Full Name" required />
+              <span className="focus"></span>
+            </div>
+            <div className="input-field">
+              <input type="text" placeholder="Email Address" required />
+              <span className="focus"></span>
+            </div>
+          </div>
+
+          <div className="input-box">
+            <div className="input-field">
+              <input type="string" placeholder="Mobile Number" required />
+              <span className="focus"></span>
+            </div>
+            <div className="input-field">
+              <input type="text" placeholder="Email Subject" required />
+              <span className="focus"></span>
+            </div>
+          </div>
+          <div className="textarea-field">
+            <textarea
+              name=""
+              id=""
+              cols={30}
+              rows={10}
+              placeholder="Your Message"
+              required
+            ></textarea>
+            <span className="focus"></span>
+          </div>
+
+          <div className="btn-box btns">
+            <a href="#contact" className="btn">
+              Submit
+            </a>
+          </div>
+        </form>
+      </section>
+
+      {/* --------------footer-------------- */}
+
+      <footer className="footer">
+        <div className="footer-text">
+          <p>Copyright &copy; 2024 by Muhammad Javed | All Right Reserved.</p>
+        </div>
+      </footer>
     </main>
   );
 }
